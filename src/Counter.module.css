@@ -1,0 +1,102 @@
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg {
+    background: #1f2130;
+    min-height: 100vh;
+}
+
+.counterContainer {
+    display: flex;
+}
+
+.settingsContainer {
+    border: 1px solid #1889a8;
+    border-radius: 5px;
+    margin-right: 100px;
+    min-width: 300px;
+}
+
+.resultContainer {
+    border: 1px solid #1889a8;
+    border-radius: 5px;
+    min-width: 300px;
+}
+
+.outerP {
+    padding: 10px;
+}
+
+.borderCounter {
+    border: 1px solid #1889a8;
+    border-radius: 5px;
+}
+
+.val {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #1889a8;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.count {
+    font-family: Arial, sans-serif;
+    font-size: 38px;
+    font-weight: bold;
+    color: #1889a8;
+}
+
+
+.btn {
+    font-family: Arial, sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    background: #1889a8;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.maxContainer {
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.minContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.valContainer {
+    margin-bottom: 20px;
+}
+
+.counterPad {
+    padding: 37px 70px 37px 70px;
+    margin-bottom: 10px;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.field {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    min-width: 50px;
+    border: 2px solid #1889a8;
+    border-radius: 5px;
+    text-align: center;
+}
+
+
+
+
