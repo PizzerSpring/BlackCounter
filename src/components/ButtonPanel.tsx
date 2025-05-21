@@ -6,9 +6,10 @@ type ButtonPanelType = {
     value: number
     setValue: (value: number) => void
     startValue: number
+    maxValue: number
 }
 
-export const ButtonPanel = ({counterButton, setValue, value, startValue}: ButtonPanelType) => {
+export const ButtonPanel = ({counterButton, setValue, value, startValue, maxValue}: ButtonPanelType) => {
     return (
         <>
             {counterButton === 1 ? <div className={`${style.borderCounter} ${style.outerP} ${style.center}`}>
@@ -17,8 +18,9 @@ export const ButtonPanel = ({counterButton, setValue, value, startValue}: Button
                 }} className={style.btn}/>
             </div> : <div className={`${style.borderCounter} ${style.outerP} ${style.btnContainer}`}>
                 <Button title={'inc'} callback={() => {
-
-                    setValue(value + 1)
+                    if(value < maxValue) {
+                        setValue(value + 1)
+                    }
                 }} className={style.btn}/>
                 <Button title={'reset'} callback={() => {
                     setValue(0)
