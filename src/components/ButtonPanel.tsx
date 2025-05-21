@@ -17,6 +17,7 @@ export const ButtonPanel = ({counterButton, setValue, value, startValue}: Button
                 }} className={style.btn}/>
             </div> : <div className={`${style.borderCounter} ${style.outerP} ${style.btnContainer}`}>
                 <Button title={'inc'} callback={() => {
+
                     setValue(value + 1)
                 }} className={style.btn}/>
                 <Button title={'reset'} callback={() => {
