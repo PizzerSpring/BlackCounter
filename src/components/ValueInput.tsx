@@ -7,9 +7,10 @@ type ValueInputType = {
     setStartValue: (startValue: number) => void
     maxValue: number
     setMaxValue: (maxValue: number) => void
+    setActive: (active: boolean) => void
 }
 
-export const ValueInput = ({title, className, startValue, setStartValue, maxValue, setMaxValue}: ValueInputType) => {
+export const ValueInput = ({title, className, startValue, setStartValue, maxValue, setMaxValue, setActive}: ValueInputType) => {
     return (
         <>
             {title === 'max value:' ?
@@ -17,12 +18,14 @@ export const ValueInput = ({title, className, startValue, setStartValue, maxValu
                     <span className={style.val}>{title}</span>
                     <input onChange={(e) => {
                         setMaxValue(+e.currentTarget.value);
+                        setActive(true)
                     }} className={style.field} type="number" placeholder={`${maxValue}`}/>
                 </div>
                 : <div className={className}>
                     <span className={style.val}>{title}</span>
                     <input onChange={(e) => {
                         setStartValue(+e.currentTarget.value);
+                        setActive(true)
                     }} className={style.field} type="number" placeholder={`${startValue}`}/>
                 </div>}
         </>

@@ -9,19 +9,23 @@ type CounterSettingsType = {
     setStartValue: (startValue: number) => void
     maxValue: number
     setMaxValue: (maxValue: number) => void
+    active: boolean
+    setActive: (active: boolean) => void
 }
 
-export const CounterSettings = ({value, setValue, startValue, setStartValue, maxValue, setMaxValue}: CounterSettingsType) => {
+export const CounterSettings = ({value, setValue, startValue, setStartValue, maxValue, setMaxValue, active, setActive}: CounterSettingsType) => {
     return (
         <div className={`${style.settingsContainer} ${style.outerP}`}>
             <ValueContainer
+                setActive={setActive}
+                active={active}
                 output={false}
                 value={value}
                 startValue={startValue}
                 setStartValue={setStartValue}
                 maxValue={maxValue}
                 setMaxValue={setMaxValue}/>
-            <ButtonPanel counterButton={1} setValue={setValue} value={value} startValue={startValue} maxValue={maxValue}/>
+            <ButtonPanel counterButton={1} setValue={setValue} value={value} startValue={startValue} maxValue={maxValue} active={active}/>
         </div>
     );
 };

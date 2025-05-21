@@ -7,10 +7,14 @@ const Counter = () => {
     const [value, setValue] = useState(0);
     const [startValue, setStartValue] = useState(0);
     const [maxValue, setMaxValue] = useState(0);
+
+    const [active, setActive] = useState(false);
     return (
         <div className={`${style.bg} ${style.center}`}>
             <div className={style.counterContainer}>
                 <CounterSettings
+                    setActive={setActive}
+                    active={active}
                     value={value}
                     setValue={setValue}
                     startValue={startValue}
@@ -18,6 +22,8 @@ const Counter = () => {
                     maxValue={maxValue}
                     setMaxValue={setMaxValue}/>
                 <CounterOutput
+                    setActive={setActive}
+                    active={active}
                     value={value}
                     setValue={setValue}
                     startValue={startValue}
