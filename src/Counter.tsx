@@ -1,13 +1,16 @@
 import style from './Counter.module.css';
-import {CountersSettings} from "./components/CountersSettings.tsx";
+import {CounterSettings} from "./components/CounterSettings.tsx";
 import {CounterOutput} from "./components/CounterOutput.tsx";
+import {useState} from "react";
 
 const Counter = () => {
+    const [value, setValue] = useState(0);
+    const [startValue, setStartValue] = useState(0);
     return (
         <div className={`${style.bg} ${style.center}`}>
             <div className={style.counterContainer}>
-                <CountersSettings/>
-                <CounterOutput/>
+                <CounterSettings value={value} setValue={setValue} startValue={startValue} setStartValue={setStartValue}/>
+                <CounterOutput value={value} setValue={setValue} startValue={startValue} setStartValue={setStartValue}/>
             </div>
         </div>
     );
