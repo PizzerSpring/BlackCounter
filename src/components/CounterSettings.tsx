@@ -11,12 +11,16 @@ type CounterSettingsType = {
     setMaxValue: (maxValue: number) => void
     active: boolean
     setActive: (active: boolean) => void
+    error: boolean
+    setError: (error: boolean) => void
 }
 
-export const CounterSettings = ({value, setValue, startValue, setStartValue, maxValue, setMaxValue, active, setActive}: CounterSettingsType) => {
+export const CounterSettings = ({value, setValue, startValue, setStartValue, maxValue, setMaxValue, active, setActive, error, setError}: CounterSettingsType) => {
     return (
         <div className={`${style.settingsContainer} ${style.outerP}`}>
             <ValueContainer
+                setError={setError}
+                error={error}
                 setActive={setActive}
                 active={active}
                 output={false}

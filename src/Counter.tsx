@@ -9,10 +9,14 @@ const Counter = () => {
     const [maxValue, setMaxValue] = useState(0);
 
     const [active, setActive] = useState(false);
+    const [error, setError] = useState(false);
+
     return (
         <div className={`${style.bg} ${style.center}`}>
             <div className={style.counterContainer}>
                 <CounterSettings
+                    setError={setError}
+                    error={error}
                     setActive={setActive}
                     active={active}
                     value={value}
@@ -22,6 +26,8 @@ const Counter = () => {
                     maxValue={maxValue}
                     setMaxValue={setMaxValue}/>
                 <CounterOutput
+                    setError={setError}
+                    error={error}
                     setActive={setActive}
                     active={active}
                     value={value}

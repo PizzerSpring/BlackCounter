@@ -11,13 +11,17 @@ type CounterOutputType = {
     setMaxValue: (maxValue: number) => void
     active: boolean
     setActive: (active: boolean) => void
+    error: boolean
+    setError: (error: boolean) => void
 }
 
 
-export const CounterOutput = ({value, setValue, startValue, setStartValue, maxValue, setMaxValue, active, setActive}:CounterOutputType) => {
+export const CounterOutput = ({value, setValue, startValue, setStartValue, maxValue, setMaxValue, active, setActive, error, setError}:CounterOutputType) => {
     return (
         <div className={`${style.resultContainer} ${style.outerP}`}>
             <ValueContainer
+                setError={setError}
+                error={error}
                 setActive={setActive}
                 active={active}
                 output={true}
