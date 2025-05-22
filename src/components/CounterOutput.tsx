@@ -9,10 +9,10 @@ type CounterOutputType = {
     setStartValue: (startValue: number) => void
     maxValue: number
     setMaxValue: (maxValue: number) => void
-    active: boolean
-    setActive: (active: boolean) => void
-    error: boolean
-    setError: (error: boolean) => void
+    active: string
+    setActive: (active: string) => void
+    error: string
+    setError: (error: string) => void
 }
 
 
@@ -30,7 +30,7 @@ export const CounterOutput = ({value, setValue, startValue, setStartValue, maxVa
                 setStartValue={setStartValue}
                 maxValue={maxValue}
                 setMaxValue={setMaxValue}/>
-            <ButtonPanel counterButton={2} setValue={setValue} value={value} startValue={startValue} maxValue={maxValue} active={active}/>
+            <ButtonPanel counterButton={2} setValue={setValue} value={value} startValue={startValue} maxValue={maxValue} active={active} setActive={setActive}/>
         </div>
     );
 };

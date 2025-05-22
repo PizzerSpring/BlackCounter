@@ -8,9 +8,9 @@ type ValueInputType = {
     setStartValue: (startValue: number) => void
     maxValue: number
     setMaxValue: (maxValue: number) => void
-    setActive: (active: boolean) => void
-    setError: (error: boolean) => void
-    error: boolean
+    setActive: (active: string) => void
+    setError: (error: string) => void
+    error: string
 }
 
 export const ValueInput = ({title, className, startValue, setStartValue, maxValue, setMaxValue, setActive, setError, error}: ValueInputType) => {
@@ -18,8 +18,8 @@ export const ValueInput = ({title, className, startValue, setStartValue, maxValu
     const isValid = maxValue <= startValue || startValue < 0 || maxValue < 0;
 
     useEffect(() => {
-        isValid ? setError(true)
-            : setError(false);
+        isValid ? setError('Incorrect value!')
+            : setError('');
     }, [
         maxValue, startValue,
     ])
@@ -30,17 +30,19 @@ export const ValueInput = ({title, className, startValue, setStartValue, maxValu
                 <div className={className}>
                     <span className={style.val}>{title}</span>
                     <input onChange={(e) => {
+                        setActive(`enter values and press 'set'`)
+                        error && setActive('')
                         setMaxValue(+e.currentTarget.value);
-                        setActive(true)
-                        error && setError(false)
+                        console.log(maxValue);
                     }} className={style.field} type="number" placeholder={`${maxValue}`}/>
                 </div>
                 : <div className={className}>
                     <span className={style.val}>{title}</span>
                     <input onChange={(e) => {
+                        setActive(`enter values and press 'set'`)
+                        error && setActive('')
                         setStartValue(+e.currentTarget.value);
-                        setActive(true)
-                        error && setError(false)
+                        console.log(startValue)
                     }} className={style.field} type="number" placeholder={`${startValue}`}/>
                 </div>}
         </>

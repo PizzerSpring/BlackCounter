@@ -8,8 +8,8 @@ const Counter = () => {
     const [startValue, setStartValue] = useState(0);
     const [maxValue, setMaxValue] = useState(0);
 
-    const [active, setActive] = useState(false);
-    const [error, setError] = useState(false);
+    const [active, setActive] = useState('');
+    const [error, setError] = useState('Error');
 
     return (
         <div className={`${style.bg} ${style.center}`}>

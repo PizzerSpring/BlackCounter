@@ -8,10 +8,10 @@ type ValueContainerType = {
     setStartValue: (startValue: number) => void
     maxValue: number
     setMaxValue: (maxValue: number) => void
-    active: boolean
-    setActive: (active: boolean) => void
-    error: boolean
-    setError: (error: boolean) => void
+    active: string
+    setActive: (active: string) => void
+    error: string
+    setError: (error: string) => void
 }
 
 export const ValueContainer = ({
@@ -30,9 +30,10 @@ export const ValueContainer = ({
         <>
             {output ?
                 <div className={`${style.borderCounter} ${style.outerP} ${style.count} ${style.center} ${style.counterPad}`}>
-                    {
-                    error ? <span className={style.error}>Incorrect value!</span> :
-                        (active ? value : `enter values and press 'set'`)
+                    {error ?
+                        <span className={style.error}>Incorrect value!</span>
+                        :
+                        (active ? <div>{active}</div> : <div>{value}</div>)
                     }
                 </div> :
                 <div className={`${style.borderCounter} ${style.outerP} ${style.valContainer}`}>
