@@ -23,13 +23,13 @@ export const ButtonPanel = ({counterButton, setValue, value, startValue, maxValu
                     setActive('')
                 }} className={style.btn}/>
             </div> : <div className={`${style.borderCounter} ${style.outerP} ${style.btnContainer}`}>
-                <Button disabled={!!active} title={'inc'} callback={() => {
+                <Button disabled={!!error || !!active || maxValue === value || disSet} title={'inc'} callback={() => {
                     if(value < maxValue) {
                         setValue(value + 1)
                     }
                 }} className={style.btn}/>
-                <Button disabled={!!active} title={'reset'} callback={() => {
-                    setValue(0)
+                <Button disabled={!!error || !!active || value === 0 || disSet} title={'reset'} callback={() => {
+                    setValue(startValue)
                 }} className={style.btn}/>
             </div>}
         </>
