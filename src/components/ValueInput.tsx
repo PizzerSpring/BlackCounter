@@ -31,7 +31,6 @@ export const ValueInput = ({title, className, startValue, setStartValue, maxValu
                     <span className={style.val}>{title}</span>
                     <input onChange={(e) => {
                         setActive(`enter values and press 'set'`)
-                        error && setActive('')
                         setMaxValue(+e.currentTarget.value);
                         console.log(maxValue);
                     }} className={style.field} type="number" placeholder={`${maxValue}`}/>
@@ -40,7 +39,6 @@ export const ValueInput = ({title, className, startValue, setStartValue, maxValu
                     <span className={style.val}>{title}</span>
                     <input onChange={(e) => {
                         setActive(`enter values and press 'set'`)
-                        error && setActive('')
                         setStartValue(+e.currentTarget.value);
                         console.log(startValue)
                     }} className={style.field} type="number" placeholder={`${startValue}`}/>

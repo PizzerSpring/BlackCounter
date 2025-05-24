@@ -30,7 +30,7 @@ export const CounterOutput = ({value, setValue, startValue, setStartValue, maxVa
                 setStartValue={setStartValue}
                 maxValue={maxValue}
                 setMaxValue={setMaxValue}/>
-            <ButtonPanel counterButton={2} setValue={setValue} value={value} startValue={startValue} maxValue={maxValue} active={active} setActive={setActive}/>
+            <ButtonPanel error={error} counterButton={2} setValue={setValue} value={value} startValue={startValue} maxValue={maxValue} active={active} setActive={setActive}/>
         </div>
     );
 };

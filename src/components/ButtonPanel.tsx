@@ -1,5 +1,6 @@
 import style from "../Counter.module.css";
 import {Button} from "./Button.tsx";
+import {useState} from "react";
 
 type ButtonPanelType = {
     counterButton: number
@@ -9,13 +10,15 @@ type ButtonPanelType = {
     maxValue: number
     active: string
     setActive: (active: string) => void
+    error: string
 }
 
-export const ButtonPanel = ({counterButton, setValue, value, startValue, maxValue, active, setActive}: ButtonPanelType) => {
+export const ButtonPanel = ({counterButton, setValue, value, startValue, maxValue, active, setActive, error}: ButtonPanelType) => {
+    const [disSet, setDisSet] = useState(false);
     return (
         <>
             {counterButton === 1 ? <div className={`${style.borderCounter} ${style.outerP} ${style.center}`}>
-                <Button disabled={!active} title={'set'} callback={() => {
+                <Button disabled={!!error || maxValue === 0 || disSet} title={'set'} callback={() => {
                     setValue(startValue)
                     setActive('')
                 }} className={style.btn}/>
