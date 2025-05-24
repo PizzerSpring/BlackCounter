@@ -32,7 +32,6 @@ export const ValueInput = ({title, className, startValue, setStartValue, maxValu
                     <input onChange={(e) => {
                         setActive(`enter values and press 'set'`)
                         setMaxValue(+e.currentTarget.value);
-                        console.log(maxValue);
                     }} className={style.field} type="number" placeholder={`${maxValue}`}/>
                 </div>
                 : <div className={className}>
@@ -40,7 +39,6 @@ export const ValueInput = ({title, className, startValue, setStartValue, maxValu
                     <input onChange={(e) => {
                         setActive(`enter values and press 'set'`)
                         setStartValue(+e.currentTarget.value);
-                        console.log(startValue)
                     }} className={style.field} type="number" placeholder={`${startValue}`}/>
                 </div>}
         </>

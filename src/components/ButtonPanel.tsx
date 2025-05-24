@@ -24,9 +24,7 @@ export const ButtonPanel = ({counterButton, setValue, value, startValue, maxValu
                 }} className={style.btn}/>
             </div> : <div className={`${style.borderCounter} ${style.outerP} ${style.btnContainer}`}>
                 <Button disabled={!!error || !!active || maxValue === value || disSet} title={'inc'} callback={() => {
-                    if(value < maxValue) {
                         setValue(value + 1)
-                    }
                 }} className={style.btn}/>
                 <Button disabled={!!error || !!active || value === 0 || disSet} title={'reset'} callback={() => {
                     setValue(startValue)

@@ -33,7 +33,7 @@ export const ValueContainer = ({
                     {error ?
                         <span className={style.error}>Incorrect value!</span>
                         :
-                        (active ? <div>{active}</div> : <div>{value}</div>)
+                        (active ? <div className={style.activeSize}>{active}</div> : <div className={`${value === maxValue ? style.valueMax : ''}`}>{value}</div>)
                     }
                 </div> :
                 <div className={`${style.borderCounter} ${style.outerP} ${style.valContainer}`}>
