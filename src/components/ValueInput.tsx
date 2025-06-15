@@ -1,5 +1,6 @@
 import style from "../Counter.module.css";
-import {useEffect} from "react";
+import {type ChangeEvent, useEffect} from "react";
+import {Input} from "./Input.tsx";
 
 type ValueInputType = {
     title: string
@@ -13,13 +14,25 @@ type ValueInputType = {
     error: string
 }
 
-export const ValueInput = ({title, className, startValue, setStartValue, maxValue, setMaxValue, setActive, setError, error}: ValueInputType) => {
+export const ValueInput = ({
+                               title,
+                               className,
+                               startValue,
+                               setStartValue,
+                               maxValue,
+                               setMaxValue,
+                               setActive,
+                               setError,
+                               error
+                           }: ValueInputType) => {
 
     const isValid = maxValue <= startValue || startValue < 0 || maxValue < 0;
 
     useEffect(() => {
         isValid ? setError('Incorrect value!')
             : setError('');
+        localStorage.setItem('maxValue', JSON.stringify(maxValue));
+        localStorage.setItem('startValue', JSON.stringify(startValue));
     }, [
         maxValue, startValue,
     ])
@@ -29,17 +42,17 @@ export const ValueInput = ({title, className, startValue, setStartValue, maxValu
             {title === 'max value:' ?
                 <div className={className}>
                     <span className={style.val}>{title}</span>
-                    <input onChange={(e) => {
+                    <Input className={style.field} callback={(e) => {
                         setActive(`enter values and press 'set'`)
                         setMaxValue(+e.currentTarget.value);
-                    }} className={style.field} type="number" placeholder={`${maxValue}`}/>
+                    }} value={maxValue}/>
                 </div>
                 : <div className={className}>
                     <span className={style.val}>{title}</span>
-                    <input onChange={(e) => {
+                    <Input className={style.field} callback={(e) => {
                         setActive(`enter values and press 'set'`)
                         setStartValue(+e.currentTarget.value);
-                    }} className={style.field} type="number" placeholder={`${startValue}`}/>
+                    }} value={startValue} />
                 </div>}
         </>
     );

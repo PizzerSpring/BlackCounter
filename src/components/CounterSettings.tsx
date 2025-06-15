@@ -1,6 +1,7 @@
 import style from "../Counter.module.css";
-import {ValueContainer} from "./ValueContainer.tsx";
 import {ButtonPanel} from "./ButtonPanel.tsx";
+import {ValueContainer} from "./ValueContainer.tsx";
+
 
 type CounterSettingsType = {
     value: number

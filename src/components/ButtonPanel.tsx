@@ -13,7 +13,16 @@ type ButtonPanelType = {
     error: string
 }
 
-export const ButtonPanel = ({counterButton, setValue, value, startValue, maxValue, active, setActive, error}: ButtonPanelType) => {
+export const ButtonPanel = ({
+                                counterButton,
+                                setValue,
+                                value,
+                                startValue,
+                                maxValue,
+                                active,
+                                setActive,
+                                error
+                            }: ButtonPanelType) => {
     const [disSet, setDisSet] = useState(false);
     return (
         <>
@@ -21,10 +30,11 @@ export const ButtonPanel = ({counterButton, setValue, value, startValue, maxValu
                 <Button disabled={!!error || maxValue === 0 || !active || disSet} title={'set'} callback={() => {
                     setValue(startValue)
                     setActive('')
+                    // console.log(value)
                 }} className={style.btn}/>
             </div> : <div className={`${style.borderCounter} ${style.outerP} ${style.btnContainer}`}>
                 <Button disabled={!!error || !!active || maxValue === value || disSet} title={'inc'} callback={() => {
-                        setValue(value + 1)
+                    setValue(value + 1)
                 }} className={style.btn}/>
                 <Button disabled={!!error || !!active || value === 0 || disSet} title={'reset'} callback={() => {
                     setValue(startValue)
