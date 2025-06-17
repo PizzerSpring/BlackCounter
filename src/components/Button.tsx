@@ -8,8 +8,6 @@ type ButtonType = {
 
 export const Button = ({title, callback, className, disabled}: ButtonType) => {
     return (
-        <button disabled={disabled} className={className} onClick={() => {
-            callback()
-        }}>{title}</button>
+        <button disabled={disabled} className={className} onClick={callback}>{title}</button>
     );
-};
+}

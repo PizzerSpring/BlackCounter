@@ -11,6 +11,8 @@ type ButtonPanelType = {
     active: string
     setActive: (active: string) => void
     error: string
+    disSet: boolean
+    setDisSet: (disSet: boolean) => void
 }
 
 export const ButtonPanel = ({
@@ -21,13 +23,19 @@ export const ButtonPanel = ({
                                 maxValue,
                                 active,
                                 setActive,
-                                error
+                                error,
+    disSet, setDisSet
+
+
+
                             }: ButtonPanelType) => {
-    const [disSet, setDisSet] = useState(false);
+
+    //const [disSet, setDisSet] = useState(false);
+
     return (
         <>
             {counterButton === 1 ? <div className={`${style.borderCounter} ${style.outerP} ${style.center}`}>
-                <Button disabled={!!error || maxValue === 0 || !active || disSet} title={'set'} callback={() => {
+                <Button disabled={!!error || maxValue === 0 || disSet} title={'set'} callback={() => {
                     setValue(startValue)
                     setActive('')
                     setDisSet(true);
@@ -36,10 +44,10 @@ export const ButtonPanel = ({
                     // console.log(value)
                 }} className={style.btn}/>
             </div> : <div className={`${style.borderCounter} ${style.outerP} ${style.btnContainer}`}>
-                <Button disabled={!!error || !!active || maxValue === value || disSet} title={'inc'} callback={() => {
+                <Button disabled={!!error || !!active || maxValue === value || !disSet} title={'inc'} callback={() => {
                     setValue(value + 1)
                 }} className={style.btn}/>
-                <Button disabled={!!error || !!active || value === 0 || disSet} title={'reset'} callback={() => {
+                <Button disabled={!!error || !!active || value === 0 || value === startValue || !disSet} title={'reset'} callback={() => {
                     setValue(startValue)
                 }} className={style.btn}/>
             </div>}

@@ -14,12 +14,16 @@ type CounterSettingsType = {
     setActive: (active: string) => void
     error: string
     setError: (error: string) => void
+    disSet: boolean
+    setDisSet: (disSet: boolean) => void
 }
 
-export const CounterSettings = ({value, setValue, startValue, setStartValue, maxValue, setMaxValue, active, setActive, error, setError}: CounterSettingsType) => {
+export const CounterSettings = ({value, setValue, startValue, setStartValue, maxValue, setMaxValue, active, setActive, error, setError, setDisSet, disSet}: CounterSettingsType) => {
     return (
         <div className={`${style.settingsContainer} ${style.outerP}`}>
             <ValueContainer
+                disSet={disSet}
+                setDisSet={setDisSet}
                 setError={setError}
                 error={error}
                 setActive={setActive}
@@ -30,7 +34,7 @@ export const CounterSettings = ({value, setValue, startValue, setStartValue, max
                 setStartValue={setStartValue}
                 maxValue={maxValue}
                 setMaxValue={setMaxValue}/>
-            <ButtonPanel error={error} counterButton={1} setValue={setValue} value={value} startValue={startValue} maxValue={maxValue} active={active} setActive={setActive}/>
+            <ButtonPanel disSet={disSet} setDisSet={setDisSet} error={error} counterButton={1} setValue={setValue} value={value} startValue={startValue} maxValue={maxValue} active={active} setActive={setActive}/>
         </div>
     );
 };

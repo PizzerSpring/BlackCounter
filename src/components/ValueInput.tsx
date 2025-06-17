@@ -12,6 +12,9 @@ type ValueInputType = {
     setActive: (active: string) => void
     setError: (error: string) => void
     error: string
+    disSet: boolean
+    setDisSet: (disSet: boolean) => void
+    value: number
 }
 
 export const ValueInput = ({
@@ -23,14 +26,17 @@ export const ValueInput = ({
                                setMaxValue,
                                setActive,
                                setError,
-                               error
+                               error,
+                               setDisSet,
+    value,
+                               disSet
                            }: ValueInputType) => {
 
     const isValid = maxValue <= startValue || startValue < 0 || maxValue < 0;
     //console.log('values')
 
     useEffect(() => {
-        console.log('value input')
+        //console.log('value input')
         isValid ? setError('Incorrect value!')
             : setError('');
         /*localStorage.setItem('maxValue', JSON.stringify(maxValue));
@@ -39,20 +45,33 @@ export const ValueInput = ({
         maxValue, startValue
     ])
 
+    const onChangeMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
+
+        if(value) {
+            setActive(`enter values and press 'set'`);
+            setDisSet(false);
+        }
+       // error && setActive(`enter values and press 'set'`);
+        setMaxValue(+e.currentTarget.value);
+    }
+
+
     return (
         <>
             {title === 'max value:' ?
                 <div className={className}>
                     <span className={style.val}>{title}</span>
-                    <Input className={style.field} callback={(e) => {
-                       error && setActive(`enter values and press 'set'`)
-                        setMaxValue(+e.currentTarget.value);
-                    }} value={maxValue}/>
+                    <Input className={style.field} callback={onChangeMaxValueHandler} value={maxValue}/>
                 </div>
                 : <div className={className}>
                     <span className={style.val}>{title}</span>
                     <Input className={style.field} callback={(e) => {
-                        error && setActive(`enter values and press 'set'`)
+                        //setDisSet(false);
+                        if(value) {
+                            setActive(`enter values and press 'set'`);
+                            setDisSet(false);
+                        }
+                        //error && setActive(`enter values and press 'set'`);
                         setStartValue(+e.currentTarget.value);
                     }} value={startValue} />
                 </div>}

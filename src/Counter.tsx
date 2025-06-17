@@ -3,6 +3,8 @@ import s from './components/Container.module.css';
 import {CounterSettings} from "./components/CounterSettings.tsx";
 import {CounterOutput} from "./components/CounterOutput.tsx";
 import {useEffect, useState} from "react";
+import {Input} from "./components/Input.tsx";
+import {Button} from "./components/Button.tsx";
 
 const Counter = () => {
 
@@ -27,7 +29,7 @@ const Counter = () => {
     const [disSet, setDisSet] = useState(false);
 
     useEffect(() => {
-        console.log('counter')
+       // console.log('counter')
         /*const maxValueAsString = localStorage.getItem('maxValue');
         if(maxValueAsString) {
             const newValue = JSON.parse(maxValueAsString);
@@ -52,6 +54,8 @@ const Counter = () => {
         <div className={`${style.bg} ${style.center}`}>
             <div className={`${style.counterContainer} ${s.container}`}>
                 <CounterSettings
+                    disSet={disSet}
+                    setDisSet={setDisSet}
                     setError={setError}
                     error={error}
                     setActive={setActive}
@@ -63,6 +67,8 @@ const Counter = () => {
                     maxValue={maxValue}
                     setMaxValue={setMaxValue}/>
                 <CounterOutput
+                    disSet={disSet}
+                    setDisSet={setDisSet}
                     setError={setError}
                     error={error}
                     setActive={setActive}

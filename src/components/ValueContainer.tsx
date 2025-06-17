@@ -12,6 +12,8 @@ type ValueContainerType = {
     setActive: (active: string) => void
     error: string
     setError: (error: string) => void
+    disSet: boolean
+    setDisSet: (disSet: boolean) => void
 }
 
 export const ValueContainer = ({
@@ -24,7 +26,9 @@ export const ValueContainer = ({
                                    active,
                                    setActive,
                                    error,
-                                   setError
+                                   setError,
+                                   disSet,
+                                   setDisSet
 }: ValueContainerType) => {
     return (
         <>
@@ -38,6 +42,9 @@ export const ValueContainer = ({
                 </div> :
                 <div className={`${style.borderCounter} ${style.outerP} ${style.valContainer}`}>
                     <ValueInput
+                        value={value}
+                        disSet={disSet}
+                        setDisSet={setDisSet}
                         error={error}
                         setError={setError}
                         setActive={setActive}
@@ -48,6 +55,9 @@ export const ValueContainer = ({
                         maxValue={maxValue}
                         setMaxValue={setMaxValue}/>
                     <ValueInput
+                        value={value}
+                        disSet={disSet}
+                        setDisSet={setDisSet}
                         error={error}
                         setError={setError}
                         setActive={setActive}
