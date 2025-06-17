@@ -30,6 +30,9 @@ export const ButtonPanel = ({
                 <Button disabled={!!error || maxValue === 0 || !active || disSet} title={'set'} callback={() => {
                     setValue(startValue)
                     setActive('')
+                    setDisSet(true);
+                    localStorage.setItem('maxValue', JSON.stringify(maxValue));
+                    localStorage.setItem('startValue', JSON.stringify(startValue));
                     // console.log(value)
                 }} className={style.btn}/>
             </div> : <div className={`${style.borderCounter} ${style.outerP} ${style.btnContainer}`}>

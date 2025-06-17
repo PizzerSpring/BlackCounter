@@ -12,19 +12,24 @@
 
 .counterContainer {
     display: flex;
+    justify-content: space-between;
 }
 
 .settingsContainer {
     border: 1px solid #1889a8;
     border-radius: 5px;
-    margin-right: 100px;
-    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 0 0 48%;
+    min-width: 416px;
 }
 
 .resultContainer {
     border: 1px solid #1889a8;
     border-radius: 5px;
-    min-width: 300px;
+    flex: 0 0 48%;
+    min-width: 416px;
 }
 
 .outerP {
@@ -47,9 +52,10 @@
 
 .count {
     font-family: Arial, sans-serif;
-    font-size: 38px;
+    font-size: 34px;
     font-weight: bold;
     color: #1889a8;
+    white-space: nowrap;
 }
 
 
@@ -99,15 +105,16 @@
 }
 
 .valueMax {
-    color: red;
+    color: crimson;
 }
 
 .error {
-    color: red;
+    color: crimson;
 }
 
 .activeSize {
     font-size: 24px;
+    white-space: nowrap;
 }
 
 

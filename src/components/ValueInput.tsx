@@ -27,14 +27,16 @@ export const ValueInput = ({
                            }: ValueInputType) => {
 
     const isValid = maxValue <= startValue || startValue < 0 || maxValue < 0;
+    //console.log('values')
 
     useEffect(() => {
+        console.log('value input')
         isValid ? setError('Incorrect value!')
             : setError('');
-        localStorage.setItem('maxValue', JSON.stringify(maxValue));
-        localStorage.setItem('startValue', JSON.stringify(startValue));
+        /*localStorage.setItem('maxValue', JSON.stringify(maxValue));
+        localStorage.setItem('startValue', JSON.stringify(startValue));*/
     }, [
-        maxValue, startValue,
+        maxValue, startValue
     ])
 
     return (
@@ -43,14 +45,14 @@ export const ValueInput = ({
                 <div className={className}>
                     <span className={style.val}>{title}</span>
                     <Input className={style.field} callback={(e) => {
-                        setActive(`enter values and press 'set'`)
+                       error && setActive(`enter values and press 'set'`)
                         setMaxValue(+e.currentTarget.value);
                     }} value={maxValue}/>
                 </div>
                 : <div className={className}>
                     <span className={style.val}>{title}</span>
                     <Input className={style.field} callback={(e) => {
-                        setActive(`enter values and press 'set'`)
+                        error && setActive(`enter values and press 'set'`)
                         setStartValue(+e.currentTarget.value);
                     }} value={startValue} />
                 </div>}
