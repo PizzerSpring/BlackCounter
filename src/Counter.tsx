@@ -2,7 +2,7 @@ import style from './Counter.module.css';
 import s from './components/Container.module.css';
 import {CounterSettings} from "./components/CounterSettings.tsx";
 import {CounterOutput} from "./components/CounterOutput.tsx";
-import {useEffect, useState} from "react";
+import {type ChangeEvent, useEffect, useState} from "react";
 import {Input} from "./components/Input.tsx";
 import {Button} from "./components/Button.tsx";
 
@@ -50,6 +50,60 @@ const Counter = () => {
         }
     }, [])
 
+
+    const revalidateError = (minValueNumber: number, maxValueNumber: number) =>
+    {
+        const isLessValue = maxValueNumber < minValueNumber
+        const isEqual =  maxValueNumber === minValueNumber
+        const minLessZero = minValueNumber < 0
+        const maxLessZero =  maxValueNumber < 0
+
+        const isInvalid = minLessZero || maxLessZero || isLessValue || isEqual
+        if (isInvalid) {
+            setError('Incorrect value!')
+            return false
+        }
+
+        setError('');
+        return  true
+    }
+
+    const onMaxValueHandler = (maxValueProps: number) => {
+        const newMaxValue = maxValueProps;
+
+        const isValid = revalidateError(startValue,newMaxValue )
+
+        if (!isValid) {
+            setMaxValue(newMaxValue);
+            return
+        }
+        // setActive(`enter values and press 'set'`);
+        setDisSet(false);
+        setActive(`enter values and press 'set'`)
+        // value === 0 && setActive(`enter values and press 'set'`)
+        setMaxValue(newMaxValue);
+    }
+
+    const onMinValueHandler = (minValue: number) => {
+        const newMinValue = minValue;
+
+        const isValid = revalidateError(newMinValue,maxValue )
+
+        if (!isValid) {
+            setStartValue(newMinValue);
+            return
+        }
+        // setActive(`enter values and press 'set'`);
+        setDisSet(false);
+        setActive(`enter values and press 'set'`)
+        // value === 0 && setActive(`enter values and press 'set'`)
+        setStartValue(newMinValue);
+    }
+
+    const onSetPressHandler = () => {
+
+    }
+
     return (
         <div className={`${style.bg} ${style.center}`}>
             <div className={`${style.counterContainer} ${s.container}`}>
@@ -63,9 +117,9 @@ const Counter = () => {
                     value={value}
                     setValue={setValue}
                     startValue={startValue}
-                    setStartValue={setStartValue}
+                    setStartValue={onMinValueHandler}
                     maxValue={maxValue}
-                    setMaxValue={setMaxValue}/>
+                    setMaxValue={onMaxValueHandler}/>
                 <CounterOutput
                     disSet={disSet}
                     setDisSet={setDisSet}
@@ -76,9 +130,9 @@ const Counter = () => {
                     value={value}
                     setValue={setValue}
                     startValue={startValue}
-                    setStartValue={setStartValue}
+                    setStartValue={onMinValueHandler}
                     maxValue={maxValue}
-                    setMaxValue={setMaxValue}/>
+                    setMaxValue={onMaxValueHandler}/>
             </div>
         </div>
     );

@@ -42,6 +42,7 @@ export const ValueContainer = ({
                 </div> :
                 <div className={`${style.borderCounter} ${style.outerP} ${style.valContainer}`}>
                     <ValueInput
+                        active={active}
                         value={value}
                         disSet={disSet}
                         setDisSet={setDisSet}
@@ -55,6 +56,7 @@ export const ValueContainer = ({
                         maxValue={maxValue}
                         setMaxValue={setMaxValue}/>
                     <ValueInput
+                        active={active}
                         value={value}
                         disSet={disSet}
                         setDisSet={setDisSet}
