@@ -17,14 +17,13 @@ const Counter = () => {
     useEffect(() => {
 
         const maxValueAsString = localStorage.getItem('maxValue');
-        if(maxValueAsString) {
-            setMaxValue(+maxValueAsString);
-        }
-
         const startValueAsString = localStorage.getItem('startValue');
-        if(startValueAsString) {
-            const newValue = JSON.parse(startValueAsString);
-            setStartValue(newValue);
+        const valueAsString = localStorage.getItem('value');
+
+        if(maxValueAsString && startValueAsString && valueAsString) {
+            setMaxValue(+maxValueAsString);
+            setStartValue(+startValueAsString);
+            setValue(+valueAsString);
         }
 
     }, [])

@@ -15,6 +15,8 @@ type CounterSettingsType = {
 
 export const CounterSettings = ({setValue, startValue, setStartValue, maxValue, setMaxValue, error, disSet}: CounterSettingsType) => {
 
+    const isCheckedSet = !!error || maxValue === 0 || disSet;
+
     const onChangeMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         const newMaxValue = +e.currentTarget.value;
         setMaxValue(newMaxValue);
@@ -36,7 +38,7 @@ export const CounterSettings = ({setValue, startValue, setStartValue, maxValue, 
                 <Input className={style.field} callback={onChangeMinValueHandler} value={startValue}/>
             </div>
             <div className={`${style.borderCounter} ${style.outerP} ${style.center}`}>
-                <Button disabled={!!error || maxValue === 0 || disSet} title={'set'} callback={setValue} className={style.btn}/>
+                <Button disabled={isCheckedSet} title={'set'} callback={setValue} className={style.btn}/>
             </div>
         </div>
     );
