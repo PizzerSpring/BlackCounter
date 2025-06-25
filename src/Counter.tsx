@@ -2,23 +2,9 @@ import style from './Counter.module.css';
 import s from './components/Container.module.css';
 import {CounterSettings} from "./components/CounterSettings.tsx";
 import {CounterOutput} from "./components/CounterOutput.tsx";
-import {type ChangeEvent, useEffect, useState} from "react";
-import {Input} from "./components/Input.tsx";
-import {Button} from "./components/Button.tsx";
+import {useEffect, useState} from "react";
 
 const Counter = () => {
-
-    /*const getStartValueFromLS = () => {
-        let startValueLS = 0;
-
-        const startValueAsString = localStorage.getItem('startValue');
-        if(startValueAsString) {
-            startValueLS = Number(JSON.parse(startValueAsString))
-        }
-        return startValueLS || 0
-    }*/
-
-    //getStartValueFromLS();
 
     const [value, setValue] = useState(0);
     const [startValue, setStartValue] = useState(0);
@@ -29,25 +15,18 @@ const Counter = () => {
     const [disSet, setDisSet] = useState(false);
 
     useEffect(() => {
-       // console.log('counter')
-        /*const maxValueAsString = localStorage.getItem('maxValue');
-        if(maxValueAsString) {
-            const newValue = JSON.parse(maxValueAsString);
-            setMaxValue(newValue);
-        }*/
 
         const maxValueAsString = localStorage.getItem('maxValue');
         if(maxValueAsString) {
-           // console.log('maxValueAsString', maxValueAsString);
             setMaxValue(+maxValueAsString);
         }
-
 
         const startValueAsString = localStorage.getItem('startValue');
         if(startValueAsString) {
             const newValue = JSON.parse(startValueAsString);
             setStartValue(newValue);
         }
+
     }, [])
 
 
@@ -77,10 +56,8 @@ const Counter = () => {
             setMaxValue(newMaxValue);
             return
         }
-        // setActive(`enter values and press 'set'`);
         setDisSet(false);
         setActive(`enter values and press 'set'`)
-        // value === 0 && setActive(`enter values and press 'set'`)
         setMaxValue(newMaxValue);
     }
 
@@ -93,15 +70,17 @@ const Counter = () => {
             setStartValue(newMinValue);
             return
         }
-        // setActive(`enter values and press 'set'`);
         setDisSet(false);
         setActive(`enter values and press 'set'`)
-        // value === 0 && setActive(`enter values and press 'set'`)
         setStartValue(newMinValue);
     }
 
     const onSetPressHandler = () => {
-
+        setValue(startValue)
+        setActive('')
+        setDisSet(true);
+        localStorage.setItem('maxValue', JSON.stringify(maxValue));
+        localStorage.setItem('startValue', JSON.stringify(startValue));
     }
 
     return (
@@ -109,30 +88,20 @@ const Counter = () => {
             <div className={`${style.counterContainer} ${s.container}`}>
                 <CounterSettings
                     disSet={disSet}
-                    setDisSet={setDisSet}
-                    setError={setError}
                     error={error}
-                    setActive={setActive}
-                    active={active}
-                    value={value}
-                    setValue={setValue}
+                    setValue={onSetPressHandler}
                     startValue={startValue}
                     setStartValue={onMinValueHandler}
                     maxValue={maxValue}
                     setMaxValue={onMaxValueHandler}/>
                 <CounterOutput
                     disSet={disSet}
-                    setDisSet={setDisSet}
-                    setError={setError}
                     error={error}
-                    setActive={setActive}
                     active={active}
                     value={value}
                     setValue={setValue}
                     startValue={startValue}
-                    setStartValue={onMinValueHandler}
-                    maxValue={maxValue}
-                    setMaxValue={onMaxValueHandler}/>
+                    maxValue={maxValue}/>
             </div>
         </div>
     );
