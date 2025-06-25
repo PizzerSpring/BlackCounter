@@ -1,6 +1,7 @@
 import style from "../Counter.module.css";
 import {ValueContainer} from "./ValueContainer.tsx";
 import {ButtonPanel} from "./ButtonPanel.tsx";
+import {Button} from "./Button.tsx";
 
 type CounterOutputType = {
     value: number
@@ -21,7 +22,14 @@ type CounterOutputType = {
 export const CounterOutput = ({value, setValue, startValue, setStartValue, maxValue, setMaxValue, active, setActive, error, setError, disSet, setDisSet}:CounterOutputType) => {
     return (
         <div className={`${style.resultContainer} ${style.outerP}`}>
-            <ValueContainer
+            <div className={`${style.borderCounter} ${style.outerP} ${style.count} ${style.center} ${style.counterPad}`}>
+                {error ?
+                    <span className={style.error}>{error}</span>
+                    :
+                    (active ? <div className={style.activeSize}>{active}</div> : <div className={`${value === maxValue ? style.valueMax : ''}`}>{value}</div>)
+                }
+            </div>
+            {/*<ValueContainer
                 disSet={disSet}
                 setDisSet={setDisSet}
                 setError={setError}
@@ -33,8 +41,16 @@ export const CounterOutput = ({value, setValue, startValue, setStartValue, maxVa
                 startValue={startValue}
                 setStartValue={setStartValue}
                 maxValue={maxValue}
-                setMaxValue={setMaxValue}/>
-            <ButtonPanel error={error} counterButton={2} setValue={setValue} value={value} startValue={startValue} maxValue={maxValue} active={active} setActive={setActive} disSet={disSet} setDisSet={setDisSet}/>
+                setMaxValue={setMaxValue}/>*/}
+            <div className={`${style.borderCounter} ${style.outerP} ${style.btnContainer}`}>
+                <Button disabled={!!error || !!active || maxValue === value || !disSet} title={'inc'} callback={() => {
+                    setValue(value + 1)
+                }} className={style.btn}/>
+                <Button disabled={!!error || !!active || value === 0 || value === startValue || !disSet} title={'reset'} callback={() => {
+                    setValue(startValue)
+                }} className={style.btn}/>
+            </div>
+           {/* <ButtonPanel error={error} counterButton={2} setValue={setValue} value={value} startValue={startValue} maxValue={maxValue} active={active} setActive={setActive} disSet={disSet} setDisSet={setDisSet}/>*/}
         </div>
     );
 };
