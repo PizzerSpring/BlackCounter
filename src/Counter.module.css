@@ -21,15 +21,17 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    flex: 0 0 48%;
-    min-width: 416px;
+    width: 450px;
 }
 
 .resultContainer {
     border: 1px solid #1889a8;
     border-radius: 5px;
-    flex: 0 0 48%;
-    min-width: 416px;
+    width: 450px;
+}
+
+.inputsContainer {
+    margin-top: 5px;
 }
 
 .outerP {
@@ -52,7 +54,7 @@
 
 .count {
     font-family: Arial, sans-serif;
-    font-size: 34px;
+    font-size: 30px;
     font-weight: bold;
     color: #1889a8;
     white-space: nowrap;
@@ -77,11 +79,6 @@
 .minContainer {
     display: flex;
     justify-content: space-between;
-}
-
-
-.valContainer {
-    margin-bottom: 20px;
 }
 
 .counterPad {
@@ -113,8 +110,7 @@
 }
 
 .activeSize {
-    font-size: 24px;
-    white-space: nowrap;
+    /*font-size: 30px;*/
 }
 
 

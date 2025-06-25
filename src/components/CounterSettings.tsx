@@ -13,7 +13,15 @@ type CounterSettingsType = {
     disSet: boolean
 }
 
-export const CounterSettings = ({setValue, startValue, setStartValue, maxValue, setMaxValue, error, disSet}: CounterSettingsType) => {
+export const CounterSettings = ({
+                                    setValue,
+                                    startValue,
+                                    setStartValue,
+                                    maxValue,
+                                    setMaxValue,
+                                    error,
+                                    disSet
+                                }: CounterSettingsType) => {
 
     const isCheckedSet = !!error || maxValue === 0 || disSet;
 
@@ -29,13 +37,15 @@ export const CounterSettings = ({setValue, startValue, setStartValue, maxValue, 
 
     return (
         <div className={`${style.settingsContainer} ${style.outerP}`}>
-            <div className={style.maxContainer}>
-                <span className={style.val}>{'max value:'}</span>
-                <Input className={style.field} callback={onChangeMaxValueHandler} value={maxValue}/>
-            </div>
-            <div className={style.minContainer}>
-                <span className={style.val}>{'start value:'}</span>
-                <Input className={style.field} callback={onChangeMinValueHandler} value={startValue}/>
+            <div className={`${style.borderCounter} ${style.outerP} ${style.inputsContainer}`}>
+                <div className={style.maxContainer}>
+                    <span className={style.val}>{'max value:'}</span>
+                    <Input className={style.field} callback={onChangeMaxValueHandler} value={maxValue}/>
+                </div>
+                <div className={style.minContainer}>
+                    <span className={style.val}>{'start value:'}</span>
+                    <Input className={style.field} callback={onChangeMinValueHandler} value={startValue}/>
+                </div>
             </div>
             <div className={`${style.borderCounter} ${style.outerP} ${style.center}`}>
                 <Button disabled={isCheckedSet} title={'set'} callback={setValue} className={style.btn}/>
