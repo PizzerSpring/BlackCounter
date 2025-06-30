@@ -98,7 +98,12 @@
     border: 2px solid #1889a8;
     border-radius: 5px;
     text-align: center;
+}
 
+.errorField {
+    background: #db86a5;
+    border: 1px solid crimson;
+    border-radius: 0;
 }
 
 .valueMax {

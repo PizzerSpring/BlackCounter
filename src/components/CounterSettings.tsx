@@ -25,6 +25,9 @@ export const CounterSettings = ({
 
     const isCheckedSet = !!error || maxValue === 0 || disSet;
 
+    const isCheckedMaxValue = maxValue < 0 || startValue === maxValue || maxValue < startValue;
+    const isCheckedStartValue = startValue < 0 || startValue === maxValue || maxValue < startValue;
+
     const onChangeMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         const newMaxValue = +e.currentTarget.value;
         setMaxValue(newMaxValue);
@@ -40,11 +43,11 @@ export const CounterSettings = ({
             <div className={`${style.borderCounter} ${style.outerP} ${style.inputsContainer}`}>
                 <div className={style.maxContainer}>
                     <span className={style.val}>{'max value:'}</span>
-                    <Input className={style.field} callback={onChangeMaxValueHandler} value={maxValue}/>
+                    <Input className={`${style.field} ${isCheckedMaxValue ? style.errorField : ''}`} callback={onChangeMaxValueHandler} value={maxValue}/>
                 </div>
                 <div className={style.minContainer}>
                     <span className={style.val}>{'start value:'}</span>
-                    <Input className={style.field} callback={onChangeMinValueHandler} value={startValue}/>
+                    <Input className={`${style.field} ${isCheckedStartValue ? style.errorField: ''}`} callback={onChangeMinValueHandler} value={startValue}/>
                 </div>
             </div>
             <div className={`${style.borderCounter} ${style.outerP} ${style.center}`}>
