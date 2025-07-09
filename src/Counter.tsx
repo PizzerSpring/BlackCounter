@@ -1,5 +1,4 @@
 import style from './Counter.module.css';
-import s from './components/Container.module.css';
 import {CounterSettings} from "./components/CounterSettings.tsx";
 import {CounterOutput} from "./components/CounterOutput.tsx";
 import {useEffect, useState} from "react";
@@ -84,7 +83,7 @@ const Counter = () => {
 
     return (
         <div className={`${style.bg} ${style.center}`}>
-            <div className={`${style.counterContainer} ${s.container}`}>
+            <div className={style.counterContainer}>
                 <CounterSettings
                     disSet={disSet}
                     error={error}

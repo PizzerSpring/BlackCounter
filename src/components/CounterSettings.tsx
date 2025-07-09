@@ -2,6 +2,7 @@ import style from "../Counter.module.css";
 import {Button} from "./Button.tsx";
 import {Input} from "./Input.tsx";
 import type {ChangeEvent} from "react";
+import s from './Container.module.css';
 
 type CounterSettingsType = {
     setValue: () => void
@@ -39,7 +40,7 @@ export const CounterSettings = ({
     }
 
     return (
-        <div className={`${style.settingsContainer} ${style.outerP}`}>
+        <div className={`${style.settingsContainer} ${style.outerP} ${s.сontainerWidth}`}>
             <div className={`${style.borderCounter} ${style.outerP} ${style.inputsContainer}`}>
                 <div className={style.maxContainer}>
                     <span className={style.val}>{'max value:'}</span>

@@ -1,3 +1,4 @@
+
 .center {
     display: flex;
     flex-direction: column;
@@ -12,7 +13,9 @@
 
 .counterContainer {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
 }
 
 .settingsContainer {
@@ -115,7 +118,7 @@
 }
 
 .activeSize {
-    /*font-size: 30px;*/
+    font-size: 30px;
 }
 
 
