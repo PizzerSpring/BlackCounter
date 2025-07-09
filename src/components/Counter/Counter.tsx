@@ -1,6 +1,6 @@
 import style from './Counter.module.css';
-import {CounterSettings} from "./components/CounterSettings.tsx";
-import {CounterOutput} from "./components/CounterOutput.tsx";
+import {CounterSettings} from "./CounterSettings/CounterSettings.tsx";
+import {CounterOutput} from "./CounterOutput/CounterOutput.tsx";
 import {useEffect, useState} from "react";
 
 const Counter = () => {

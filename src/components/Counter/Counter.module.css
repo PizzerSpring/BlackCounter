@@ -1,0 +1,25 @@
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg {
+    background: #1f2130;
+    min-height: 100vh;
+}
+
+.counterContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+
+
+
+
+

@@ -1,0 +1,80 @@
+.resultContainer {
+    border: 1px solid #1889a8;
+    border-radius: 5px;
+    width: 450px;
+}
+
+.outerP {
+    padding: 10px;
+}
+
+.borderCounter {
+    border: 1px solid #1889a8;
+    border-radius: 5px;
+}
+
+.count {
+    font-family: Arial, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: #1889a8;
+    white-space: nowrap;
+}
+
+.counterPad {
+    padding: 37px 70px 37px 70px;
+    margin-bottom: 10px;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn {
+    font-family: Arial, sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    background: #1889a8;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.error {
+    color: crimson;
+}
+
+.activeSize {
+    font-size: 30px;
+}
+
+.valueMax {
+    color: crimson;
+}
+
+@media screen and (max-width: 476px) {
+    .containerWidth {
+        width: 350px;
+    }
+
+    .activeSize {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .containerWidth {
+        width: 300px;
+    }
+
+    .activeSize {
+        font-size: 16px;
+    }
+}

@@ -1,6 +1,5 @@
-import style from "../Counter.module.css";
-import {Button} from "./Button.tsx";
-import s from './Container.module.css';
+import style from "./CounterOutput.module.css";
+import {Button} from "../Button/Button.tsx";
 
 type CounterOutputType = {
     value: number
@@ -18,12 +17,12 @@ export const CounterOutput = ({value, setValue, startValue, maxValue, active, er
     const isCheckedRes = !!error || !!active || startValue === value || value === 0 || !disSet;
 
     return (
-        <div className={`${style.resultContainer} ${style.outerP} ${s.сontainerWidth}`}>
+        <div className={`${style.resultContainer} ${style.outerP} ${style.containerWidth}`}>
             <div className={`${style.borderCounter} ${style.outerP} ${style.count} ${style.center} ${style.counterPad}`}>
                 {error ?
                     <span className={style.error}>{error}</span>
                     :
-                    (active ? <div className={`${style.activeSize} ${s.activeSize}`}>{active}</div> : <div className={`${value === maxValue ? style.valueMax : ''}`}>{value}</div>)
+                    (active ? <div className={style.activeSize}>{active}</div> : <div className={`${value === maxValue ? style.valueMax : ''}`}>{value}</div>)
                 }
             </div>
             <div className={`${style.borderCounter} ${style.outerP} ${style.btnContainer}`}>
